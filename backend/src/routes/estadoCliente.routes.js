@@ -1,10 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/estadoCliente.controller");
 
-router.get("/", controller.getAll);
-router.post("/", controller.create);
-router.put("/:id", controller.update);
-router.delete("/:id", controller.remove);
+const {
+  getEstadosCliente,
+  getEstadoClienteById,
+  createEstadoCliente,
+  updateEstadoCliente,
+  deleteEstadoCliente,
+} = require("../controllers/estadoClienteController");
+
+router.get("/", getEstadosCliente);
+router.get("/:id", getEstadoClienteById);
+router.post("/", createEstadoCliente);
+router.put("/:id", updateEstadoCliente);
+router.delete("/:id", deleteEstadoCliente);
 
 module.exports = router;
